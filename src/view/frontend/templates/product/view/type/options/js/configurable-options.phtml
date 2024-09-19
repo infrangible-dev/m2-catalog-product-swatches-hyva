@@ -1,0 +1,57 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @author      Andreas Knollmann
+ * @copyright   2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+ */
+
+use Infrangible\CatalogProductSwatches\Block\Swatches;
+use Magento\Framework\Escaper;
+
+/** @var Escaper $escaper */
+/** @var Swatches $block */
+?>
+
+<script>
+    var attributesData = <?= $block->getAttributesData(); ?>;
+
+    document.addEventListener('alpine:init', () => {
+        new Promise(resolve => {
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = '<?= $escaper->escapeUrl($block->getViewFileUrl('Infrangible_CatalogProductSwatchesHyva::js/handlebars.min-v4.7.8.js')) ?>';
+            script.async = true;
+            script.onload = resolve;
+            document.head.appendChild(script);
+        }).then(() => {
+            window.addEventListener('configurable-selection-changed', function(event) {
+                if (event.detail.candidates.length === 1) {
+                    var selectedProductId = event.detail.productIndex;
+
+                    for (var attributeId in attributesData) {
+                        var attributeData = attributesData[attributeId];
+
+                        var attributeSelector = attributeData.selector;
+                        var attributeTemplateId = attributeData.templateId;
+                        var attributeCode = attributeData.attributeCode;
+                        var attributeValue = attributeData.values[selectedProductId];
+
+                        var template = Handlebars.compile(document.querySelector('#' + attributeTemplateId).innerHTML);
+                        var templateData = {
+                            attributeId: attributeId,
+                            attributeCode: attributeCode,
+                            attributeCodeClass: attributeCode ? attributeCode.replace(/\W+/g, '_').toLowerCase() : null,
+                            attributeValue: attributeValue,
+                            attributeValueClass: attributeValue ? attributeValue.replace(/\W+/g, '_').toLowerCase() : null
+                        };
+
+                        document.querySelector(attributeSelector).innerHTML = template(templateData);
+                    }
+                }
+            });
+        });
+    });
+</script>
