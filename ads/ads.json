@@ -1,10 +1,10 @@
 {
     "require": [
-        "webserver_php_magento-module-demo.json",
-        "database_magento2-module-demo.json",
-        "elasticsearch_magento-module-demo.json",
-        "mailcatcher_magento.json",
-        "magento2-module-demo-hyva.json"
+        "{{{1200128_anodosys}}}/webserver_php_magento-module-demo.json",
+        "{{{1200128_anodosys}}}/database_magento2-module-demo.json",
+        "{{{1200128_anodosys}}}/elasticsearch_magento-module-demo.json",
+        "{{{1200128_anodosys}}}/mailcatcher_magento.json",
+        "{{{1200128_anodosys}}}/magento2-module-demo-hyva.json"
     ],
     "global": {
         "systemName": "infrangible_m2_catalog_product_swatches_hyva"
@@ -14,7 +14,7 @@
         "webServerVersion": "2.4",
         "phpVersion": "8.2",
         "containerVolumes": [
-            "../src:/var/www/magento/htdocs/app/code/Infrangible/CatalogProductSwatchesHyva:www-data"
+            "{configPath}/../src:/var/www/magento/htdocs/app/code/Infrangible/CatalogProductSwatchesHyva:www-data"
         ]
     },
     "db": {
