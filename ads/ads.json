@@ -6,6 +6,9 @@
         "{{{1200128_anodosys}}}/mailcatcher_magento.json",
         "{{{1200128_anodosys}}}/magento2-module-demo-hyva.json"
     ],
+    "extensions": {
+        "1200128_anodosys": "dev"
+    },
     "global": {
         "systemName": "infrangible_m2_catalog_product_swatches_hyva"
     },
