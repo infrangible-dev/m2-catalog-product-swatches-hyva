@@ -1,11 +1,15 @@
 {
     "name": "infrangible/m2-catalog-product-swatches-hyva",
-    "description": "Infrangible Magento 2 Catalog Product Swatches Hyvä Theme",
+    "description": "Provides the groundwork of Catalog Product Swatches in stores using the Hyvä theme, so variant-specific information can be shown on configurable product pages.",
     "type": "magento2-module",
     "version": "1.0.1",
     "license": "MIT",
     "keywords": [
-        "Magento"
+        "Magento",
+        "Magento 2",
+        "Adobe Commerce",
+        "Hyvä",
+        "Catalog"
     ],
     "homepage": "https://github.com/infrangible-dev/m2-catalog-product-swatches-hyva",
     "authors": [
